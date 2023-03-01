@@ -1,7 +1,7 @@
 spring:
   datasource:
-    username: csye6225
-    password: Password123!
+    username: root
+    password: aabcd
     url: jdbc:mysql://localhost:3306/csye6225?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
 
 
@@ -11,4 +11,4 @@ spring:
 
 aws:
   s3:
-    bucket-name: my-bucket-default-qhomolig
+    bucket-name: my-bucket-default-taw5emfd
