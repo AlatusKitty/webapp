@@ -8,8 +8,8 @@
 
 name: Java CI with Maven
 
-on: pull_request
-  types: [opened]
+on:
+  pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
