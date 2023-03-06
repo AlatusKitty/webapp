@@ -9,8 +9,7 @@
 name: Java CI with Maven
 
 on: pull_request
-      types:
-        - opened
+      types: [opened]
 jobs:
   build:
     runs-on: ubuntu-latest
