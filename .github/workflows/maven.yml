@@ -27,4 +27,12 @@ jobs:
       run: mvn -B package --file pom.xml
 
 
+    # Setup AWS Credentials
+    - name: Configure AWS credentials
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+    # Build AMI
+    - name: Run packer
+      run: packer build -var access_key=$AWS_ACCESS_KEY_ID -var secret_key=$AWS_SECRET_ACCESS_KEY AMI.json
