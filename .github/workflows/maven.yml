@@ -38,6 +38,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: echo $AWS_ACCESS_KEY_ID
 
-    # Build AMI
+    # Build AAMI
     - name: Run packer
       run: packer build -var aws_access_key=$AWS_ACCESS_KEY_ID -var aws_secret_key=$AWS_SECRET_ACCESS_KEY AMI.json
