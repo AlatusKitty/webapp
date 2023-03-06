@@ -24,7 +24,7 @@
     {
       "type": "file",
       "source": "target/demo-1.0-SNAPSHOT.jar",
-      "destination": "/home/ubuntu/"
+      "destination": "/tmp/demo-1.0-SNAPSHOT.jar"
     }
   ]
 }
