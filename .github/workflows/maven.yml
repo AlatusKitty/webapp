@@ -40,4 +40,4 @@ jobs:
 
     # Build AMI
     - name: Run packer
-      run: packer build -var access_key=$AWS_ACCESS_KEY_ID -var secret_key=$AWS_SECRET_ACCESS_KEY AMI.json
+      run: packer build -var access_key=$aws-access-key-id -var secret_key=$aws-secret-access-key AMI.json
