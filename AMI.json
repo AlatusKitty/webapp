@@ -19,12 +19,19 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "script/script.sh"
+      "script": "scripts/script.sh"
     },
     {
       "type": "file",
       "source": "target/demo-1.0-SNAPSHOT.jar",
       "destination": "/tmp/demo-1.0-SNAPSHOT.jar"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo chmod +x scripts/startup-script.sh",
+        "scripts/startup-script.sh"
+      ]
     }
   ]
 }
