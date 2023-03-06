@@ -35,7 +35,7 @@ jobs:
 
       # Setup AWS Credentials
       - name: Configure AWS credentials
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        # if: github.event_name == 'pull_request' && github.event.action == 'closed'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -43,5 +43,5 @@ jobs:
 
       # Build AMI
       - name: Run packer
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        # if: github.event_name == 'pull_request' && github.event.action == 'closed'
         run: packer build -var aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} AMI.json
