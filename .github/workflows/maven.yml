@@ -1,3 +1,39 @@
+## This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+## For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+#
+## This workflow uses actions that are not certified by GitHub.
+## They are provided by a third-party and are governed by
+## separate terms of service, privacy policy, and support
+## documentation.
+#name: Java CI with Maven
+#
+#on:
+#  pull_request
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout Repository-
+#        uses: actions/checkout@v3
+#
+#      - name: Set up JDK 1.8
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '8'
+#          distribution: 'temurin'
+#          cache: maven
+#
+#      - name: Run Unit Tests
+#        run: mvn test
+#
+#      - name: Build with Maven
+#        run: mvn -B package --file pom.xml
+#
+#      - name: Validate AMI Script
+#        run: packer validate AMI.json
+#
+#
+#
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
@@ -5,6 +41,7 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
+
 name: Java CI with Maven
 
 on:
@@ -32,5 +69,16 @@ jobs:
       - name: Validate AMI Script
         run: packer validate AMI.json
 
+      # Setup AWS Credentials
+      - name: Configure AWS credentials
+        # if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: echo $AWS_ACCESS_KEY_ID
 
 
+      # Build AMI
+      - name: Run packer
+        # if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        run: packer build -var aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} AMI.json
