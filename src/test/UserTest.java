@@ -1,15 +1,12 @@
 import LeiYang.entity.Users;
-import org.junit.Test;
-import org.junit.internal.runners.JUnit4ClassRunner;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestComponent;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
 
 
-@RunWith(JUnit4.class)
 @SpringBootTest
 public class UserTest {
     private static String adminToken;

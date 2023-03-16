@@ -1,7 +1,7 @@
 spring:
   datasource:
-    username: csye6225
-    password: Password123!
+    username: root
+    password: aabcd
     url: jdbc:mysql://localhost:3306/csye6225?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
 
 
